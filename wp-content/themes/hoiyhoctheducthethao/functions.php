@@ -15,7 +15,8 @@ add_image_size('post-small', 250, 200, true);
 // Khai báo menu
 function register_my_menu()
 {
-    register_nav_menu('main-menu', __('Main Menu')); // đặt tên là Header Menu
+    register_nav_menu('primary-menu', __('Primary Menu'));
+    register_nav_menu('footer-menu', __('Footer Menu'));
 }
 add_action('init', 'register_my_menu');
 
@@ -89,32 +90,42 @@ function mtem_blog_related_post($title = 'Bài viết liên quan', $count = 5)
 }
 
 
-if (!function_exists('mtem_pagination')) {
-    function mtem_pagination()
+if (!function_exists('post_pagination')) {
+    function post_pagination($paged = '', $max_page = '')
     {
-        if (paginate_links() != '') { ?>
-            <div class="pagination-post">
-                <?php
-                global $wp_query;
-                $big = 999999999;
-                echo paginate_links(array(
-                    'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                    'format' => '?paged=%#%',
-                    'prev_text'    => __('<i class="far fa-chevron-double-left"></i>'),
-                    'next_text'    => __('<i class="far fa-chevron-double-right"></i>'),
-                    'current' => max(1, get_query_var('paged')),
-                    'total' => $wp_query->max_num_pages
-                ));
-                ?>
-            </div>
-        <?php }
+        global $wp_query;
+
+        if (!$paged) {
+            $paged = (get_query_var('paged')) ? get_query_var('paged') : ((get_query_var('page')) ? get_query_var('page') : 1);
+        }
+
+        if (!$max_page) {
+            global $wp_query;
+            $max_page = isset($wp_query->max_num_pages) ? $wp_query->max_num_pages : 1;
+        }
+
+        $big  = 999999999; // need an unlikely integer
+
+        $html = paginate_links(array(
+            'base'       => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format'     => '?paged=%#%',
+            'current'    => max(1, $paged),
+            'total'      => $max_page,
+            'mid_size'   => 1,
+            'prev_text'    => __('<i class="fas fa-chevron-left"></i>'),
+            'next_text'    => __('<i class="fas fa-chevron-right"></i>'),
+        ));
+
+        $html = "<div class='pagination-post'>" . $html . "</div>";
+
+        echo $html;
     }
 }
 
 
 // Bài viết mới nhất
 
-function mtem_get_latest_post($quantity = 5)
+function yhoc_get_latest_post($quantity = 5)
 {
     global $post;
 
@@ -147,7 +158,7 @@ function mtem_get_latest_post($quantity = 5)
 // tags
 
 
-function mtem_get_tags_post($quantity = 0)
+function yhoc_get_tags_post($quantity = 0)
 {
     $args_tags = array(
         'type'      => 'post',
@@ -172,7 +183,7 @@ function mtem_get_tags_post($quantity = 0)
 }
 
 
-function mtem_get_related_random_post($count = 6)
+function mget_related_post($count = 6)
 {
     global $post;
     $postcat = get_the_category($post->ID);
@@ -185,25 +196,22 @@ function mtem_get_related_random_post($count = 6)
     }
 
     $args = array(
-        'post_type'   => get_post_type(),
+        'post_status' => 'publish',
+        'post_type' => 'post',
         'showposts' => $count,
-        'orderby'     => 'rand',
-        'cat'         => 3,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'cat'         => $cateIds,
         'exclude'     => $post->ID
     );
 
     $queryRelatedPost = new WP_Query($args);
 
     if ($queryRelatedPost->have_posts()) : ?>
-        <div class="related-post">
+        <div class="related-post row category__row">
             <?php while ($queryRelatedPost->have_posts()) : $queryRelatedPost->the_post(); ?>
-                <div class="related-post__itemt">
-                    <div class="related-post__thumb">
-                        <a href="<?php echo get_the_permalink() ?>">
-                            <?php the_post_thumbnail(); ?>
-                        </a>
-                        <h3 class="related-post__title"><?php the_title() ?></h3>
-                    </div>
+                <div class="col-sm-6 col-lg-4 col-12">
+                    <?php get_template_part('template-parts/article', 'related'); ?>
                 </div>
             <?php endwhile; ?>
         </div>
@@ -212,24 +220,73 @@ function mtem_get_related_random_post($count = 6)
 }
 
 
-function mtem_logo_web($wp_customize)
+function yhoc_customize_options($wp_customize)
 {
     $wp_customize->add_section(
-        'logo',
+        'site-logo',
         array(
-            'title' => 'Logo',
-            'description' => 'logo',
+            'title' => 'Site Logo',
+            'description' => 'Fields information for site logo',
             'priority' => 25
         )
     );
 
-    $wp_customize->add_setting('Logo', array('default' => ''));
+    $wp_customize->add_setting('logo', array('default' => ''));
     $wp_customize->add_control(
-        new WP_Customize_Image_Control($wp_customize, 'Logo', array(
+        new WP_Customize_Image_Control($wp_customize, 'logo', array(
             'label' => 'Logo',
-            'section' => 'logo',
-            'settings' => 'Logo'
+            'section' => 'site-logo',
+            'settings' => 'logo'
         ))
     );
+
+    $wp_customize->add_setting('site-name', array('default' => ''));
+    $wp_customize->add_control('site-name', array(
+        'label' => 'Name',
+        'section' => 'site-logo',
+        'type' => 'text',
+        'settings' => 'site-name'
+    ));
+
+    $wp_customize->add_setting('site-short-name', array('default' => ''));
+    $wp_customize->add_control('site-short-name', array(
+        'label' => 'Short Name',
+        'section' => 'site-logo',
+        'type' => 'text',
+        'settings' => 'site-short-name'
+    ));
+
+    $wp_customize->add_setting('site-description', array('default' => ''));
+    $wp_customize->add_control('Facebook', array(
+        'label' => 'Description',
+        'section' => 'site-logo',
+        'type' => 'textarea',
+        'settings' => 'site-description'
+    ));
 }
-add_action('customize_register', 'mtem_logo_web');
+add_action('customize_register', 'yhoc_customize_options');
+
+if (function_exists('acf_add_options_page')) {
+    /**
+     * Add Option ACF
+     */
+    acf_add_options_page(
+        array(
+            'page_title'    => __('Theme Options'),
+            'icon_url'      => 'dashicons-admin-generic',
+        )
+    );
+}
+
+
+// Remove last breadcrum in single page
+add_filter('wpseo_breadcrumb_single_link_info', 'remove_post_title_wpseo_breadcrumb', 10, 3);
+function remove_post_title_wpseo_breadcrumb($link_info, $index, $crumbs)
+{
+    if (is_single()) {
+        if (is_singular() && isset($link_info['id']))
+            return [];
+        return $link_info;
+    }
+    return $link_info;
+}

@@ -1,37 +1,29 @@
 <?php get_header() ?>
 <!-- Page Content -->
-  <div class="container">
-    
-      <div class="row">
+<div class="container">
 
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-          
-          <h1 class="my-2 mb-4 page-header">
-            Tác giả:
-            <small><?php the_author() ?></small>
-          </h1>
+    <div class="my-4 page-header">
+        <h1 class="font-primary-bold-40 text-upper">Tác giả:&ensp;<small><?php the_author() ?></small><span class="header-partial__icon"></span></h1>
+    </div>
+    <div class="row category__row">
 
-          <?php if ( have_posts() ) : ?>
+        <?php if (have_posts()) : ?>
 
-            <?php while ( have_posts() ) : the_post(); ?>
+            <?php while (have_posts()) : the_post(); ?>
 
-                  <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+                <div class="col-sm-6 col-lg-4 col-12">
+                    <?php get_template_part('template-parts/article', 'part'); ?>
+                </div>
 
             <?php endwhile; ?>
 
-          <?php endif; ?>
+        <?php endif; ?>
+        <!-- Pagination -->
+        <?php post_pagination() ?>
 
-          <!-- Pagination -->
-          <?php mtem_pagination() ?>
+    </div>
+    <!-- /.row -->
 
-        </div>
-
-        <?php get_sidebar() ?>
-
-      </div>
-      <!-- /.row -->
-
-  </div>
+</div>
 <!-- /.container -->
 <?php get_footer() ?>

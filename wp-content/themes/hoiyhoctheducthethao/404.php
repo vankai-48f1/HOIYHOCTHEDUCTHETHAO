@@ -1,37 +1,17 @@
 <?php get_header() ?>
 <!-- Page Content -->
-  <div class="container">
-    
-      <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-          
-          <h1 class="my-2 mb-4 page-header">
-            Không tìm thấy trang:
-            <small>Error 404</small>
-          </h1>
-
-          <p>
-            Xin lỗi vì sự cố này! trang bạn đang tìm kiếm không tồn tại. Vui lòng tìm kiếm lại ở khung bên dưới.
-          </p>
-
-          <form action="<?php bloginfo('url'); ?>/">     
-            <div class="input-group">
-                <input type="text" class="form-control" value="<?php the_search_query(); ?>" name="s" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-            </div>
-          </form>
-
+<div class="page-404">
+    <div class="container page-404__container pss-relative">
+        <div class="page-404__content">
+            <h1 class="page-404__number">404</h1>
+            <h3 class="page-404__status">OOPS</h3>
+            <div class="page-404__description">The page you requested could not be found...</div>
+            <a href="<?php echo home_url() ?>" class="page-404__btn-back-home see-more-btn">BACK TO HOME</a>
         </div>
-
-        <?php get_sidebar() ?>
-
-      </div>
-      <!-- /.row -->
-
-  </div>
+    </div>
+    <div class="page-404__image">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/images/404.png" alt="">
+    </div>
+</div>
 <!-- /.container -->
 <?php get_footer() ?>

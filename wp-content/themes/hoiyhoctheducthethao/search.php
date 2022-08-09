@@ -1,52 +1,46 @@
 <?php get_header() ?>
 <!-- Page Content -->
-  <div class="container">
-    
-      <div class="row">
+<div class="container">
+
+    <div class="row">
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-          
-          <h1 class="my-2 mb-4 page-header">
-            Tìm kiếm:
-            <small><?php the_search_query(); ?></small>
-          </h1>
 
-          <?php if ( have_posts() ) : ?>
+            <h1 class="my-2 mb-4 page-header">
+                Tìm kiếm:
+                <small><?php the_search_query(); ?></small>
+            </h1>
 
-            <?php while ( have_posts() ) : the_post(); ?>
+            <?php if (have_posts()) : ?>
 
-                  <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+                <?php while (have_posts()) : the_post(); ?>
 
-            <?php endwhile; ?>
+                    <?php get_template_part('template-parts/content', get_post_format()); ?>
 
-          <?php else: ?>
-              
-              <p>
-                Không có bài viết nào phù hợp với từ khóa: <strong><?php the_search_query(); ?></strong>
-              </p>
+                <?php endwhile; ?>
 
-              <form action="<?php bloginfo('url'); ?>/">     
-                <div class="input-group">
-                    <input type="text" class="form-control" value="<?php the_search_query(); ?>" name="s" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
-                </div>
-              </form>
+            <?php else : ?>
 
-          <?php endif; ?>
+                <p>
+                    Không có bài viết nào phù hợp với từ khóa: <strong><?php the_search_query(); ?></strong>
+                </p>
 
-          <!-- Pagination -->
-          <?php mtem_pagination() ?>
+                <?php get_template_part('template-parts/form', 'search'); ?>
+
+
+            <?php endif; ?>
+
+            <!-- Pagination -->
+            <?php mtem_pagination() ?>
 
         </div>
 
         <?php get_sidebar() ?>
 
-      </div>
-      <!-- /.row -->
+    </div>
+    <!-- /.row -->
 
-  </div>
+</div>
 <!-- /.container -->
 <?php get_footer() ?>

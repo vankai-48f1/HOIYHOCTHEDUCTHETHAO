@@ -1,9 +1,3 @@
-<?php
-/*
-Template Name: Archives
-*/
-?>
-
 <?php get_header() ?>
 <!-- Page Content -->
   <div class="container">

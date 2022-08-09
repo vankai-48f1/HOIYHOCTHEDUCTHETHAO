@@ -1,37 +1,40 @@
 <?php get_header() ?>
 <!-- Page Content -->
-  <div class="container">
-    
-      <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-          
-          <h1 class="my-2 mb-4 page-header">
-            Danh mục:
-            <small><?php single_cat_title() ?></small>
-          </h1>
-
-          <?php if ( have_posts() ) : ?>
-
-            <?php while ( have_posts() ) : the_post(); ?>
-
-                  <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
-
-            <?php endwhile; ?>
-
-          <?php endif; ?>
-
-          <!-- Pagination -->
-          <?php mtem_pagination() ?>
-
+<div class="category">
+    <!-- Header -->
+    <?php get_template_part('template-parts/header/header', 'category'); ?>
+    <!-- List article -->
+    <div class="container">
+        <div class="row category__row">
+            <?php
+            $category = get_queried_object();
+            if ($category) :
+                $args = array(
+                    'post_status' => 'publish',
+                    'post_type' => 'post',
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    // 'showposts' => -1,
+                    'posts_per_page' => -1,
+                    'cat' => $category->term_id,
+                );
+                $the_query = new WP_Query($args);
+                if ($the_query->have_posts()) :
+                    while ($the_query->have_posts()) : $the_query->the_post();
+            ?>
+                        <div class="col-sm-6 col-lg-4 col-12">
+                            <?php get_template_part('template-parts/article', 'part'); ?>
+                        </div>
+            <?php endwhile;
+                endif;
+                // Reset Post Data
+                wp_reset_postdata();
+            endif;
+            ?>
         </div>
-
-        <?php get_sidebar() ?>
-
-      </div>
-      <!-- /.row -->
-
-  </div>
+        <!-- Pagination -->
+        <?php post_pagination() ?>
+    </div>
+</div>
 <!-- /.container -->
 <?php get_footer() ?>

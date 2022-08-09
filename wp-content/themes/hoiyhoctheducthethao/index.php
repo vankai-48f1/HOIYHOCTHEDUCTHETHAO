@@ -1,32 +1,49 @@
+<?php
+/*
+Template Name: Home
+*/
+?>
+
 <?php get_header() ?>
 <!-- Page Content -->
-  <div class="container">
-    
-      <div class="row">
+<?php if (have_posts()) : ?>
+    <main class="hm-page">
+        <?php while (have_posts()) : the_post(); ?>
+            <!-- Intro -->
+            <?php
+            $intro = get_field('intro_home');
+            $args_intro = array(
+                'class-wrap' => 'arrow-style-primary',
+                'slider_name'  => 'slider_home',
+            )
+            ?>
+            <div class="hm-intro">
+                <!-- slider -->
+                <?php get_template_part('template-parts/slider/slider', 'single', $args_intro); ?>
+                <div class="hm-intro__polygon">
+                    <div class="hm-intro__polygon-white"></div>
+                    <div class="hm-intro__polygon-green-light"></div>
+                    <div class="hm-intro__polygon-green-dark"></div>
+                </div>
+            </div>
 
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
+            <!-- About us -->
+            <?php get_template_part('template-parts/home/about', 'us'); ?>
 
-          <?php if ( have_posts() ) : ?>
+            <!-- Information - Event -->
+            <?php get_template_part('template-parts/home/info', 'event'); ?>
 
-            <?php while ( have_posts() ) : the_post(); ?>
+            <!-- Science -->
+            <?php get_template_part('template-parts/home/science'); ?>
 
-                  <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+            <!-- Partner -->
+            <?php get_template_part('template-parts/home/partner'); ?>
 
-            <?php endwhile; ?>
+            <!-- Contact -->
+            <?php get_template_part('template-parts/content', 'contact'); ?>
 
-          <?php endif; ?>
-
-          <!-- Pagination -->
-          <?php mtem_pagination() ?>
-
-        </div>
-
-        <?php get_sidebar() ?>
-
-      </div>
-      <!-- /.row -->
-
-  </div>
+        <?php endwhile; ?>
+    </main>
+<?php endif; ?>
 <!-- /.container -->
 <?php get_footer() ?>
