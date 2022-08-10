@@ -37,7 +37,9 @@
                 </div>
                 <?php if (get_field('display_see_more')) : ?>
                     <div class="contact__see-more">
-                        <a class="see-more-btn" href="<?php echo get_field('link_contact') ? get_field('link_contact')['url'] : "#" ?>">Xem thêm</a>
+                        <a class="see-more-btn" href="<?php echo get_field('link_contact') ? get_field('link_contact')['url'] : "#" ?>">
+                            <?php echo get_field('link_contact')['title'] ? get_field('link_contact')['title'] : "Xem thêm"; ?>
+                        </a>
                     </div>
                 <?php endif; ?>
             </div>

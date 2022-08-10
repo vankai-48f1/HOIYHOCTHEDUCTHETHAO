@@ -59,7 +59,7 @@
   .post__breadcrumb a:hover {
     color: var(--color-primary);
   }
-
+  
   .article-item__category--related:hover {
     color: var(--color-primary);
   }
@@ -93,20 +93,20 @@
   .page-about .about-intro__big-title {
     font-size: calc(5rem + 5.54vw);
   }
-
+  
   .about-intro__col-left {
-    order: 2;
+      order: 2;
   }
-
+  
   .about-intro__col-right {
-    order: 1;
-    margin-bottom: 50px;
+      order: 1;
+      margin-bottom: 50px;
   }
-
+  
   .about-intro__left {
-    margin-bottom: 0;
+      margin-bottom: 0;
   }
-
+  
   .about-intro,
   .about-intro__content {
     padding-bottom: 0;
@@ -214,11 +214,11 @@
   .hm-intro__polygon-green-dark {
     height: calc(100% + 20px);
   }
-
+  
   .post__breadcrumb {
     padding: 0 0 10px;
   }
-
+  
   .post-body ul,
   .post-body ol {
     padding-left: 1rem;
