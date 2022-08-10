@@ -21,21 +21,23 @@
         <div class="post-share"><i class="far fa-share-alt"></i>&ensp;Share</div>
     </div>
     <!-- Post Content -->
-    <div class="post-body">
+    <div class="post-body post-body-single">
         <?php the_content() ?>
     </div>
 
-    <hr>
-    <!-- Tags -->
-    <div class="post-tags">
-        <?php the_tags('', '') ?>
-    </div>
+    <?php if (has_tag()) : ?>
+        <!-- Tags -->
+        <hr>
+        <div class="post-tags">
+            <?php the_tags('', '') ?>
+        </div>
+    <?php endif; ?>
 
-    <hr>
     <!-- Related Post -->
+    <hr>
     <div class="post-relative">
         <div class="post-relative-hd">
-            <h2 class="font-primary-bold-40 text-upper cl-black">Bạn Có thể quan tâm<span class="header-partial__icon"></span></h2>
+            <h2 class="font-primary-bold-40 text-upper cl-black d-flex">Bạn Có thể quan tâm<span class="header-partial__icon"></span></h2>
         </div>
         <?php mget_related_post() ?>
     </div>
