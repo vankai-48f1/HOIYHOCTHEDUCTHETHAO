@@ -557,7 +557,7 @@ body {
   width: 25px;
   height: 25px;
   position: relative;
-  top: -3px;
+  top: -15px;
   left: -9px;
 }
 
@@ -877,6 +877,7 @@ body {
   font-size: 12px;
   text-transform: uppercase;
   color: #fff;
+  white-space: nowrap;
 }
 
 .hm-about-us__content {
@@ -887,6 +888,10 @@ body {
 
 .hm-about-us__link {
   margin-top: auto;
+}
+
+.hm-about-us__link--mb {
+  display: none;
 }
 
 /*.hm-about-us__description {*/
@@ -922,7 +927,6 @@ body {
 
 .hm-info-event .header-partial {
   color: #fff;
-  margin-bottom: 0;
 }
 
 .hm-info-event .header-partial__icon::before {
@@ -1015,6 +1019,10 @@ body {
   transition: all 350ms ease;
 }
 
+.hm-info-event .header-partial,
+.hm-science__header .header-partial {
+  margin-bottom: 15px;
+}
 /* ==== Science ====== */
 .hm-science__link {
   text-align: right;
@@ -1110,7 +1118,7 @@ body {
 /* === Partner ======= */
 .hm-partner {
   background-color: #f5f5f5;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .hm-partner__header {
@@ -1126,6 +1134,15 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+/* the slides */
+.hm-partner__list .slick-slide {
+  margin: 0 15px;
+}
+/* the parent */
+.hm-partner__list .slick-list {
+  margin: 0 -15px;
 }
 /* ===== Contact ==== */
 .contact {

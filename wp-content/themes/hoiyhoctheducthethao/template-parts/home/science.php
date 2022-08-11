@@ -1,14 +1,16 @@
 <div class="hm-science">
     <div class="container">
         <!-- Header -->
-        <div class="hm-science__header">
-            <?php get_template_part('template-parts/header/header', 'partial', array("title" => get_field('title_science'))); ?>
+        <div class="hm-session-header">
+            <div class="hm-science__header">
+                <?php get_template_part('template-parts/header/header', 'partial', array("title" => get_field('title_science'))); ?>
+            </div>
+            <!-- See more -->
+            <div class="hm-science__link">
+                <a class="see-more-btn" href="<?php echo get_field('link_science') ? get_field('link_science')['url'] : "#" ?>">Xem thêm</a>
+            </div>
         </div>
-        <!-- See more -->
-        <div class="hm-science__link">
-            <a class="see-more-btn" href="<?php echo get_field('link_science') ? get_field('link_science')['url'] : "#" ?>">Xem thêm</a>
-        </div>
-
+        
         <?php
         $terms = get_field('category_popular');
         if ($terms) : ?>

@@ -144,6 +144,26 @@
   .hm-about-us__logo-right {
     display: none;
   }
+
+  .hm-about-us__link--dk {
+    display: none;
+  }
+
+  .hm-about-us__link--mb {
+    display: block;
+    text-align: right;
+    margin-bottom: 30px;
+  }
+
+  .hm-about-us__content .header-partial {
+    margin-bottom: 15px;
+  }
+
+  /* .hm-session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } */
 }
 
 @media screen and (max-width: 575px) {
@@ -222,5 +242,17 @@
   .post-body ul,
   .post-body ol {
     padding-left: 1rem;
+  }
+
+  .hm-partner__header {
+    padding-bottom: 0;
+  }
+
+  .hm-partner__list {
+    padding-bottom: 15px !important;
+  }
+
+  .hm-partner {
+    overflow-x: hidden;
   }
 }

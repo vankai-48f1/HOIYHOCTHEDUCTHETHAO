@@ -2,12 +2,14 @@
     <div class="container">
         <div class="hm-info-event__main">
             <!-- header -->
-            <div class="hm-info-event__header">
-                <?php get_template_part('template-parts/header/header', 'partial', array("title" => get_field('title_info_event'))); ?>
-            </div>
-            <!-- See more -->
-            <div class="hm-info-event__link">
-                <a class="see-more-btn" href="<?php echo get_field('link_info_event') ? get_field('link_info_event')['url'] : "#" ?>">Xem thêm</a>
+            <div class="hm-session-header">
+                <div class="hm-info-event__header">
+                    <?php get_template_part('template-parts/header/header', 'partial', array("title" => get_field('title_info_event'))); ?>
+                </div>
+                <!-- See more -->
+                <div class="hm-info-event__link">
+                    <a class="see-more-btn" href="<?php echo get_field('link_info_event') ? get_field('link_info_event')['url'] : "#" ?>">Xem thêm</a>
+                </div>
             </div>
             <!-- List article -->
             <div class="hm-info-event__articles">

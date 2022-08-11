@@ -23,9 +23,14 @@
                         <div class="col-md-6 col-12">
                             <div class="hm-about-us__content">
                                 <!-- Section header -->
-                                <?php get_template_part('template-parts/header/header', 'partial', array("title" => $about_us_title)); ?>
+                                <div class="hm-session-header">
+                                    <?php get_template_part('template-parts/header/header', 'partial', array("title" => $about_us_title)); ?>
+                                    <div class="hm-about-us__link hm-about-us__link--mb">
+                                        <a class="see-more-btn" href="<?php echo $about_us_link ? $about_us_link['url'] : "#" ?>">Xem thêm</a>
+                                    </div>
+                                </div>
                                 <div class="hm-about-us__description font-primary-regular-18"><?php echo $description ?></div>
-                                <div class="hm-about-us__link">
+                                <div class="hm-about-us__link hm-about-us__link--dk">
                                     <a class="see-more-btn" href="<?php echo $about_us_link ? $about_us_link['url'] : "#" ?>">Xem thêm</a>
                                 </div>
                             </div>
