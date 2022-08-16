@@ -1136,13 +1136,19 @@ body {
   width: 100%;
 }
 
+.hm-partner__item > a img {
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+}
+
 /* the slides */
 .hm-partner__list .slick-slide {
-  margin: 0 15px;
+  margin: 0 25px;
 }
 /* the parent */
 .hm-partner__list .slick-list {
-  margin: 0 -15px;
+  margin: 0 -25px;
 }
 /* ===== Contact ==== */
 .contact {
@@ -1467,6 +1473,10 @@ body {
   right: 0;
   background-image: url("../images/hd-cate-right.png");
   background-position: right bottom;
+}
+
+.category-hd__title-without-list {
+  margin-bottom: 4rem;
 }
 
 .category-hd__title h1 {

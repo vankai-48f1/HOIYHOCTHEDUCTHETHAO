@@ -1,12 +1,15 @@
 <div class="category-hd">
     <div class="container">
         <div class="category-hd__inner">
-            <div class="category-hd__title">
-                <h1 class="font-primary-bold-40"><?php echo get_field('navigation_science') ? get_the_title() : single_cat_title() ?><span class="header-partial__icon"></span></h1>
-            </div>
             <?php
             $catlist = get_field('navigation_science');
             $cateParamUrl = $_GET["cate"];
+            ?>
+            <div class="category-hd__title <?php echo !$catlist ? 'category-hd__title-without-list' : '' ?>">
+                <h1 class="font-primary-bold-40"><?php echo get_field('navigation_science') ? get_the_title() : single_cat_title() ?><span class="header-partial__icon"></span></h1>
+            </div>
+
+            <?php
             if ($catlist) {
             ?>
                 <div class="subcat-list">
