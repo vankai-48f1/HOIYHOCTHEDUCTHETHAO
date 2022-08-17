@@ -1299,7 +1299,7 @@ body {
   background-color: transparent;
   font-family: var(--font-primary-medium);
   font-size: 18px;
-  color: #fff;
+  color: #000;
 }
 
 .page-contact input::placeholder,
