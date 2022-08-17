@@ -255,4 +255,8 @@
   .hm-partner {
     overflow-x: hidden;
   }
+
+  .post-share {
+    margin-left: 0;
+  }
 }

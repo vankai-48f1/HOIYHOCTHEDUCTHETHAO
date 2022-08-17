@@ -645,6 +645,8 @@ body {
 .post-share {
   color: #6f6f6f;
   font-size: 14px;
+  display: flex;
+  margin-left: auto;
 }
 
 .post-share i {
