@@ -693,3 +693,12 @@ a:hover {
   font-family: var(--font-secondary-bold);
   font-size: 45px;
 }
+
+/* === Set style css of wp ==== */
+.aligncenter,
+figure.wp-block-gallery.aligncenter,
+.wp-block-image .aligncenter figcaption,
+.aligncenter img {
+  text-align: center;
+}
+
