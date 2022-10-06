@@ -726,9 +726,9 @@ body {
     line-height: 1.6;
 }
 
-/* .post-body-single img {
-    margin: 0 auto;
-} */
+/*.post-body-single img {*/
+/*    margin: 0 auto;*/
+/*}*/
 /* ===== Home page =========== */
 /* ===== Home page =========== */
 /* ===== Home page =========== */
@@ -1557,7 +1557,10 @@ body {
 
 .about-intro {
   padding-top: 50px;
-  padding-bottom: 50px;
+}
+
+.about-intro__content {
+  padding-bottom: 15px;
 }
 
 .about-intro__right {

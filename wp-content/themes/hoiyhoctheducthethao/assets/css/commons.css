@@ -68,8 +68,6 @@ blockquote {
 ol,
 ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 h1,
 h2,
@@ -701,4 +699,3 @@ figure.wp-block-gallery.aligncenter,
 .aligncenter img {
   text-align: center;
 }
-

@@ -20,7 +20,7 @@ get_header();
 
                 <!-- Intro -->
                 <?php $intro_about = get_field('intro_about') ?>
-                <div class="about-intro mb-4">
+                <div class="about-intro">
                     <div class="row">
                         <div class="col-lg-6 col-12 about-intro__col-left">
                             <div class="about-intro__left">
