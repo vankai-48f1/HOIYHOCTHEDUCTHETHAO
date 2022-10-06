@@ -202,7 +202,7 @@ function mget_related_post($count = 6)
         'orderby' => 'date',
         'order' => 'DESC',
         'cat'         => $cateIds,
-        'exclude'     => $post->ID
+        'post__not_in'     => array($post->ID)
     );
 
     $queryRelatedPost = new WP_Query($args);
