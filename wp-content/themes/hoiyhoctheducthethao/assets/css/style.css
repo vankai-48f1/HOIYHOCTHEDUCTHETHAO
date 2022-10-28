@@ -683,6 +683,7 @@ body {
   line-height: 1.5;
 }
 
+.post-body h1,
 .post-body h2,
 .post-body h3,
 .post-body h4,
@@ -701,29 +702,29 @@ body {
   /* padding-left: 0.5rem; */
 }
 
-.post-body ul { 
-  list-style-type: disc; 
-  list-style-position: inside; 
+.post-body ul {
+  list-style-type: disc;
+  list-style-position: inside;
 }
-.post-body ol { 
-  list-style-type: decimal; 
-  list-style-position: inside; 
+.post-body ol {
+  list-style-type: decimal;
+  list-style-position: inside;
 }
-.post-body ul ul, 
-.post-body ol ul { 
-  list-style-type: circle; 
-  list-style-position: inside; 
-  margin-left: 15px; 
+.post-body ul ul,
+.post-body ol ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-left: 15px;
 }
 .post-body ol ol,
-.post-body ul ol { 
-  list-style-type: lower-latin; 
-  list-style-position: inside; 
-  margin-left: 15px; 
+.post-body ul ol {
+  list-style-type: lower-latin;
+  list-style-position: inside;
+  margin-left: 15px;
 }
 
 .post-body-single {
-    line-height: 1.6;
+  line-height: 1.6;
 }
 
 /*.post-body-single img {*/
@@ -1139,9 +1140,9 @@ body {
 }
 
 .hm-partner__item > a img {
-    width: 100%;
-    height: 100%;
-    object-fit:contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* the slides */
@@ -1614,3 +1615,47 @@ body {
   }
 }
 
+/* Block: Table ------------------------------ */
+
+/* Table head */
+/* .wp-block-table thead {
+	background-color: #000;
+	color: #fff;
+} */
+/* Table Body */
+/* .wp-block-table tbody {
+	background-color: #ccc;
+	color: #000;
+} */
+/* Table Rows - All rows */
+/* .wp-block-table tbody tr {
+	background-color: #dedede;
+} */
+/* Table Rows - alternating row */
+/* .wp-block-table tbody tr:nth-child(odd) {
+	background-color: #fff;
+} */
+
+/* Table body cells */
+.wp-block-table tbody td {
+	border: 1px solid #dedede;
+}
+
+.wp-block-table table {
+	background: #fff;
+}
+
+.wp-block-table table,
+.wp-block-table thead,
+.wp-block-table tbody,
+.wp-block-table tfoot,
+.wp-block-table tr,
+.wp-block-table td,
+.wp-block-table th {
+	border: 1px solid #dedede;
+	padding: 1rem;
+}
+
+.wp-block-table figcaption {
+    margin-top: 7px;
+}
