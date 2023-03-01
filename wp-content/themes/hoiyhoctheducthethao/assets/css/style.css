@@ -613,6 +613,14 @@ body {
   margin: 0 8px;
 }
 
+.post-authors {
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-column-gap: 30px;
+  column-gap: 30px;
+  row-gap: 15px;
+}
+
 .post-author {
   display: flex;
 }
@@ -623,7 +631,7 @@ body {
   border-radius: 50%;
   margin-right: 15px;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
 }
 
@@ -638,8 +646,12 @@ body {
 
 .post-lead {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 30px;
+  -webkit-column-gap: 30px;
+  column-gap: 30px;
+  row-gap: 15px;
 }
 
 .post-share {
