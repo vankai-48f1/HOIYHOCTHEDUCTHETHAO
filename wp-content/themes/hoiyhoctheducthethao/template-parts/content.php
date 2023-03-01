@@ -8,7 +8,7 @@
     <div class="post-item-desc">
         <a href="<?php the_permalink() ?>" class="cl-black">
             <h2 class="post-item-title"><?php the_title() ?></h2>
-            <div class="post-item-excerpt"><?php the_excerpt() ?></div>
+            <div class="post-item-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></div>
         </a>
         <div class="post-item-link text-muted">
             <a href="<?php the_permalink() ?>" class="mbutton bg-prm cl-white hover-btn-opacity">Read More &rarr;</a>

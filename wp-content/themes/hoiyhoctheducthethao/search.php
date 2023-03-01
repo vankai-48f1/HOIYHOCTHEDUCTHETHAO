@@ -13,13 +13,15 @@
             </h1>
 
             <?php if (have_posts()) : ?>
+                <div class="row category__row">
+                    <?php while (have_posts()) : the_post(); ?>
 
-                <?php while (have_posts()) : the_post(); ?>
+                        <div class="col-sm-6 col-lg-4 col-12">
+                            <?php get_template_part('template-parts/article', 'part'); ?>
+                        </div>
 
-                    <?php get_template_part('template-parts/content', get_post_format()); ?>
-
-                <?php endwhile; ?>
-
+                    <?php endwhile; ?>
+                </div>
             <?php else : ?>
 
                 <p>

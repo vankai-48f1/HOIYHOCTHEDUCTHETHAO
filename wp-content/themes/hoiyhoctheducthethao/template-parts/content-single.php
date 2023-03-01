@@ -34,14 +34,17 @@
                         <div class="post-author">
                             <?php
                             $author_avt = get_field('user_avatar', 'user_' . $author->ID);
+                            // var_dump($author);
                             ?>
-                            <a href="<?php echo esc_attr($author->user_url);; ?>">
+                            <a href="<?php echo get_author_posts_url($author->ID); ?>">
                                 <div class="author-picture" style="background-image: url('<?php echo esc_url($author_avt); ?>')"></div>
                             </a>
 
                             <div class="post-author-info">
                                 <div class="post-author-name">
-                                    <?php echo $author->display_name; ?>
+                                    <a href="<?php echo get_author_posts_url($author->ID); ?>">
+                                        <?php echo $author->display_name; ?>
+                                    </a>
                                 </div>
                                 <div class="post-author-name">
                                     <?php echo $author->user_email; ?>
