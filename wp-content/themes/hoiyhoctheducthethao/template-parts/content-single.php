@@ -29,8 +29,8 @@
             $co_authors = get_field("co-authors");
             $incre = 0;
             if ($co_authors) : ?>
-                <?php foreach ($co_authors as $author) : $incre++; ?>
-                    <?php if ($author->ID != get_the_author_meta('ID') && $incre < 2) : ?>
+                <?php foreach ($co_authors as $author) : ?>
+                    <?php if ($author->ID != get_the_author_meta('ID') && $incre < 3) : ?>
                         <div class="post-author">
                             <?php
                             $author_avt = get_field('user_avatar', 'user_' . $author->ID);
@@ -52,6 +52,7 @@
                             </div>
                         </div>
                     <?php endif; ?>
+                    <?php $incre++; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
